@@ -1,67 +1,159 @@
-```html
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>uwu troliado puto</title>
-
+    <meta charset="UTF-8">
+    <title>¡Plantitas y Flores Kawaii! 🌸✨</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width">
 
-    <script>
-        function play() {
-            var audio = document.getElementById("audio");
-            audio.play();
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        function pic() {
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7, #ffd1dc);
+            font-family: 'Comic Sans MS', 'Bubblegum Sans', 'Segoe UI', cursive, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Tarjeta super cuqui y rosita */
+        #main {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.75);
+            padding: 45px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(8px);
+            border: 3px dashed #ffb6c1;
+            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.5);
+            max-width: 420px;
+            width: 90%;
+            animation: latido 2.5s ease-in-out infinite;
+        }
+
+        @keyframes latido {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .emoji-florcita {
+            font-size: 50px;
+            margin-bottom: 10px;
+            display: block;
+            animation: girar 4s linear infinite;
+        }
+
+        @keyframes girar {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        #main h1 {
+            color: #d81b60;
+            font-size: 23px;
+            margin-bottom: 12px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        #main p {
+            color: #ad1457;
+            font-size: 15px;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        /* Botón tierno y pastel */
+        .btn-cuqui {
+            background: linear-gradient(135deg, #ff8da1, #ff6b8b);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: inherit;
+            border-radius: 40px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 107, 139, 0.4);
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .btn-cuqui:hover {
+            transform: scale(1.06);
+            background: linear-gradient(135deg, #ff7991, #ff5274);
+            box-shadow: 0 8px 25px rgba(255, 107, 139, 0.6);
+        }
+
+        .btn-cuqui:active {
+            transform: scale(0.97);
+        }
+
+        /* Pantalla del Jumpscare */
+        #theimg {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            z-index: 9999;
+        }
+
+        #theimg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+    <script>
+        function dispararJumpscare() {
+            var audio = document.getElementById("audio");
+            audio.play();
+
             document.getElementById("theimg").style.display = "block";
             document.getElementById("main").style.display = "none";
             document.body.style.background = "black";
-        }
 
-        function refresh() {
-            document.getElementById("refresh").style.display = "block";
-        }
-
-        function fullscreen() {
-            var fs = document.documentElement;
-
-            if (fs.requestFullscreen) {
-                fs.requestFullscreen();
-            } else if (fs.mozRequestFullScreen) {
-                fs.mozRequestFullScreen();
-            } else if (fs.webkitRequestFullscreen) {
-                fs.webkitRequestFullscreen();
+            var docElement = document.documentElement;
+            if (docElement.requestFullscreen) {
+                docElement.requestFullscreen();
+            } else if (docElement.mozRequestFullScreen) {
+                docElement.mozRequestFullScreen();
+            } else if (docElement.webkitRequestFullscreen) {
+                docElement.webkitRequestFullscreen();
+            } else if (docElement.msRequestFullscreen) {
+                docElement.msRequestFullscreen();
             }
         }
-
-        window.addEventListener("load", function () {
-            play();
-
-            setTimeout(function () {
-                pic();
-                fullscreen();
-            }, 360);
-
-            setTimeout(function () {
-                refresh();
-            }, 3000);
-        });
     </script>
 </head>
 
 <body>
 
-    <div id="theimg" style="display: none;">
-        <img src="scare.jpg">
-    </div>
-
+    <!-- Pantalla cuqui de flores y rosita -->
     <div id="main">
+        <span class="emoji-florcita">🌸🌷✨</span>
+        <h1>¡Hola amiguis! Bienvenid@ uwu</h1>
+        <p>Haz clic en el botoncito de abajo para abrir la cartita sorpresa llena de amor y florecitas 💌</p>
+        <button class="btn-cuqui" onclick="dispararJumpscare()">Abrir cartita 💖</button>
         <audio id="audio" src="scream2.mp3"></audio>
     </div>
 
+    <!-- Imagen del Jumpscare -->
+    <div id="theimg">
+        <img src="scare.jpg" alt="Susto">
+    </div>
 
 </body>
 </html>
-```
-
